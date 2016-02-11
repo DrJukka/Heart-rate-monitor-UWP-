@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="HeartBeat.HeartBeatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HeartBeat.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" x:Name="DeviceName"  TextWrapping="Wrap" Text="N/A"/>
+                <Button Grid.Column="1" Content="Show all" Click="Button_Click"></Button>
+            </Grid>
+            <Grid Grid.Row="1" x:Name="progressGrid"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+                <local:ProgressRingWithText x:Name="progressIndicator" IsActive="True" Text="Waiting for data"></local:ProgressRingWithText>
+            </Grid>
+            <Grid Grid.Row="1" x:Name="valuesGrid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock x:Name="Value"  TextWrapping="Wrap" Text=""/>
+                </StackPanel>
+                <Grid x:Name="outputGrid" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <local:ChartControlFull x:Name="chartControlOne" ChartDataPoints="20"  IsZoomEnabled="True" Grid.Column="1" Grid.Row="1" Margin="4,4,4,4"></local:ChartControlFull>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
+
